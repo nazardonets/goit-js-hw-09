@@ -59,9 +59,12 @@ const datePicker = flatpickr('#datetime-picker', {
 
    onClose(selectedDates) {
       if (selectedDates[0] <= Date.now()) {
-         Notify.failure('Please choose a date in the future', {
-            timeout: 3000,
-         });
+         Notify.failure(
+            'Вечірка на Щекавиці не може бути в минулому. Виберіть дату в майбутньому.',
+            {
+               timeout: 5000,
+            }
+         );
 
          startBtnEl.disabled = true;
       }
@@ -82,7 +85,9 @@ startBtnEl.addEventListener('click', e => {
    if (datePicker.input.value !== '') {
       startBtnEl.disabled = true;
       datePicker.input.disabled = true;
-      Notify.success('Відлік до вечірки на Щекавиці розпочато');
+      Notify.success('Відлік до вечірки на Щекавиці розпочато! 🚀', {
+         timeout: 4000,
+      });
       startCountdown();
    }
 });
