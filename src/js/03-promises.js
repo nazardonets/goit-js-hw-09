@@ -8,7 +8,6 @@ const inputAmountEl = formEl.elements['amount'];
 const submitBtnEl = formEl.querySelector('button[type="submit"]');
 
 function createPromise(position, delay) {
-   delay = delay + parseInt(inputStepEl.value);
    const shouldResolve = Math.random() > 0.5;
 
    const promise = new Promise((resolve, reject) => {
@@ -30,14 +29,19 @@ function createPromise(position, delay) {
    return promise;
 }
 
-formEl.addEventListener('submit', e => {
+formEl.addEventListener('click', e => {
    e.preventDefault();
 
-   let numberOfRepeats = parseInt(inputAmountEl.value);
-   let step = parseInt(inputStepEl.value);
+   if (e.target === submitBtnEl) {
+      let numberOfRepeats = parseInt(inputAmountEl.value);
+      let step = parseInt(inputStepEl.value);
 
-   for (i = 1; i <= numberOfRepeats; i++) {
-      createPromise(i, step);
-      step += parseInt(inputStepEl.value);
+      for (i = 1; i <= numberOfRepeats; i++) {
+         if (i === 1) {
+            step = parseInt(inputDelayEl.value);
+         }
+         createPromise(i, step);
+         step += parseInt(inputStepEl.value);
+      }
    }
 });
