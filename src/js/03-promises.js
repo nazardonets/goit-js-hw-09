@@ -32,7 +32,7 @@ formEl.addEventListener('submit', e => {
    let numberOfRepeats = parseInt(inputAmountEl.value);
    let step = parseInt(inputStepEl.value);
 
-   for (i = 1; i <= numberOfRepeats; i++) {
+   for (let i = 1; i <= numberOfRepeats; i++) {
       if (i === 1) {
          step = parseInt(inputDelayEl.value);
       }
