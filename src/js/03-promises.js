@@ -30,11 +30,8 @@ function createPromise(position, delay) {
       });
 }
 
-formEl.addEventListener('submit', e => {
-   e.preventDefault();
-
+function onSubmit() {
    let numberOfRepeats = parseInt(inputAmountEl.value);
-   let step = parseInt(inputStepEl.value);
 
    for (let i = 1; i <= numberOfRepeats; i++) {
       if (i === 1) {
@@ -43,4 +40,9 @@ formEl.addEventListener('submit', e => {
       createPromise(i, step);
       step += parseInt(inputStepEl.value);
    }
+}
+
+formEl.addEventListener('submit', e => {
+   e.preventDefault();
+   onSubmit();
 });
