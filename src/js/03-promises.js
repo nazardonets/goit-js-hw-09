@@ -32,6 +32,7 @@ function createPromise(position, delay) {
 
 function onSubmit() {
    let numberOfRepeats = parseInt(inputAmountEl.value);
+   let step = parseInt(inputStepEl.value);
 
    for (let i = 1; i <= numberOfRepeats; i++) {
       if (i === 1) {
